@@ -10,6 +10,8 @@ gem install loady
 
 If any error occurs, Loady will continue reading the file, ignoring problems rows and logging a warning for each.
 
+By default, messages are logged to the standard output.
+
 Basic usage:
 
   Loady::CsvLoader.foreach "/your/file.csv" do |row|
