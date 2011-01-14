@@ -2,6 +2,8 @@
 
 Loady is a simple file reader and logger. Use it to quickly load a csv file, continue on error rows, and do basic logging.
 
+Currently it only works with ruby 1.9.
+
 == Install
 
   gem install loady
