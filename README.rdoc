@@ -4,7 +4,7 @@ Loady is a simple file reader and logger. Use it to quickly load a csv file, con
 
 == Install
 
-gem install loady
+  gem install loady
 
 == Use
 
