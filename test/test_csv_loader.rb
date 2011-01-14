@@ -8,7 +8,7 @@ class CsvLoaderTest < Test::Unit::TestCase
     should "read file1" do
       monkeys = []
 
-      Loady::CsvLoader.foreach "test/csv/file1.csv", :skip_first_row => true do |row|
+      Loady::CsvLoader.read "test/csv/file1.csv", :skip_first_row => true do |row|
         monkeys << { :name => row[0], :year => row[1] }
       end
 
@@ -23,7 +23,7 @@ class CsvLoaderTest < Test::Unit::TestCase
       logger = Logger.new("/dev/null")
       monkeys = []
 
-      Loady::CsvLoader.foreach "test/csv/file2.csv", :logger => logger do |row|
+      Loady::CsvLoader.read "test/csv/file2.csv", :logger => logger do |row|
         monkeys << { :name => row[0], :year => row[1] }
       end
 

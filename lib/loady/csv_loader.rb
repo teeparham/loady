@@ -7,7 +7,7 @@ module Loady
     # options:
     #   :skip_first_row => true                       -- default = false
     #   :logger => Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
-    def self.foreach(filename, options = {})
+    def self.read(filename, options = {})
       success = 0
       warning = 0
 

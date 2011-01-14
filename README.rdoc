@@ -18,7 +18,7 @@ By default, messages are logged to the standard output.
 
 Basic usage:
 
-  Loady::CsvLoader.foreach "/your/file.csv" do |row|
+  Loady::CsvLoader.read "/your/file.csv" do |row|
     puts "#{row[0]},#{row[1]},etc."
   end
 
@@ -26,7 +26,7 @@ Skip first row and log to a file:
 
   logger = Logger.new("/your/file.log")
 
-  Loady::CsvLoader.foreach "/your/file.csv", :logger => logger, :skip_first_row => true do |row|
+  Loady::CsvLoader.read "/your/file.csv", :logger => logger, :skip_first_row => true do |row|
     # do some stuff
   end
 
