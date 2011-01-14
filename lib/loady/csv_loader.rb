@@ -46,7 +46,7 @@ module Loady
         rescue Exception => message
           warning += 1
           line_number += 1
-          logger.error "Read Error: #{message.to_s + " - at line #{line_number}"}\n#{line}"
+          logger.error "#{message.to_s + " - at line #{line_number}"}\n#{line}"
         end
 
         logger.info "Finished. Loaded #{success} input rows. #{warning} unprocessed rows."
