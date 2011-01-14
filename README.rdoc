@@ -6,6 +6,10 @@ Loady is a simple file reader and logger. Use it to quickly load a csv file, con
 
   gem install loady
 
+Use bunder. Include the gem in your Gemfile:
+
+  gem 'loady'
+
 == Use
 
 If any error occurs, Loady will continue reading the file, ignoring problems rows and logging a warning for each.
