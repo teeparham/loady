@@ -6,9 +6,13 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
+    shoulda (2.11.3)
+    test-unit (2.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   loady!
+  shoulda
+  test-unit

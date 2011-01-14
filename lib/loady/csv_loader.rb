@@ -49,7 +49,7 @@ module Loady
           logger.error "#{message.to_s + " - at line #{line_number}"}\n#{line}"
         end
 
-        logger.info "Finished. Loaded #{success} input rows. #{warning} unprocessed rows."
+        logger.info "Finished. Loaded #{success} rows. #{warning} unprocessed rows."
 
       rescue Exception => message
         logger.fatal "Unhandled error: \n#{message}\n"
