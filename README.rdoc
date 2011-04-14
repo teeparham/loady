@@ -27,7 +27,7 @@ Basic usage:
 
 Skip first row and log to a file:
 
-  logger = Logger.new("/your/file.log")
+  logger = Logger.new "/your/file.log"
 
   Loady::CsvLoader.read "/your/file.csv", :logger => logger, :skip_first_row => true do |row|
     # do some stuff for each row
