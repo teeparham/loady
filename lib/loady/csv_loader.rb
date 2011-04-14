@@ -63,17 +63,17 @@ module Loady
     #  :strip => false        -- default = true  -- strip each row value
     def self.named_attribute_hash(row, attrs, options={})
       options = options.merge!(:strip => true){|k,o,n| o }
-      
+
       h = {}
-      
+
       attrs.each_with_index do |attr, i|
-        if options[:strip]          
+        if options[:strip]
           h[attr] = row[i].strip
         else
           h[attr] = row[i]
         end
       end
-      
+
       h
     end
     

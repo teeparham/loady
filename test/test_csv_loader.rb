@@ -31,8 +31,8 @@ class CsvLoaderTest < Test::Unit::TestCase
       assert_equal monkeys[9][:year], "1933", "last row year"
    end
    
-   should "build named_attribute_hash" do 
-     row = ['Bubbles  ', '2000', ' King Kong ']         
+   should "build named_attribute_hash" do
+     row = ['Bubbles  ', '2000', ' King Kong ']
      attrs = Loady::CsvLoader.named_attribute_hash row, [:name, :year, :mom]
      
      assert_equal attrs.size, 3
