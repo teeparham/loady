@@ -7,7 +7,7 @@ module Loady
     # options:
     #   :skip_first_row => true                       -- default = false
     #   :logger => Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
-    def self.read(filename, options = {})
+    def self.read(filename, options={})
       success = 0
       warning = 0
 
@@ -55,6 +55,27 @@ module Loady
         logger.fatal "Unhandled error: \n#{message}\n"
       end
     end
-
+    
+    # CsvLoader.named_attribute_hash row, [:name, :age, :email]
+    # => { :name => 'Bob', :age => '21', :email => 'bob@example.com' }
+    #
+    # options:
+    #  :strip => false        -- default = true  -- strip each row value
+    def self.named_attribute_hash(row, attrs, options={})
+      options = options.merge!(:strip => true){|k,o,n| o }
+      
+      h = {}
+      
+      attrs.each_with_index do |attr, i|
+        if options[:strip]          
+          h[attr] = row[i].strip
+        else
+          h[attr] = row[i]
+        end
+      end
+      
+      h
+    end
+    
   end
 end
