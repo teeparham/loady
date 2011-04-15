@@ -35,9 +35,8 @@ Skip first row and log to a file:
 
 Name your attributes:
 
-  Loady::CsvLoader.read "/your/file.csv" do |row|
-    attrs = Loady.named_attribute_hash row, [:name, :year, :mom]
-    Monkey.create attrs
+  Loady::CsvLoader.read "/your/file.csv"  do |row|
+    Monkey.create row.to_attributes [:name, :year, :mom]
   end
 
 
@@ -50,3 +49,8 @@ Fork away. Please create a topic branch and write passing tests if you are submi
   bundle install
   rake test
   git checkout -b your_fix
+
+
+== ToDo
+
+Read attribute names from header row
