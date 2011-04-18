@@ -22,7 +22,7 @@ class CsvLoaderTest < Test::Unit::TestCase
       logger = Logger.new("/dev/null")
       monkeys = []
 
-      Loady::CsvLoader.read "test/csv/file2.csv", :logger => logger do |row|
+      Loady.csv "test/csv/file2.csv", :logger => logger do |row|
         monkeys << row.to_attributes([:name, :year])
       end
 
@@ -32,7 +32,7 @@ class CsvLoaderTest < Test::Unit::TestCase
       assert_equal monkeys[9][:name], "King Kong", "last row name"
       assert_equal monkeys[9][:year], "1933", "last row year"
     end
-   
+       
   end
 
 end
