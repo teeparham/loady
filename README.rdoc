@@ -39,18 +39,3 @@ Name your attributes:
     Monkey.create row.to_attributes [:name, :year, :mom]
   end
 
-
-== Development
-
-Fork away. Please create a topic branch and write passing tests if you are submitting a pull request.
-
-  git clone git://github.com/[yourfork]/loady.git
-  cd loady
-  bundle install
-  rake test
-  git checkout -b your_fix
-
-
-== ToDo
-
-Read attribute names from header row
