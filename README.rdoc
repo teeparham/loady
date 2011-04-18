@@ -2,19 +2,19 @@
 
 Loady is a simple file reader and logger. Use it to quickly load a csv file, continue on error rows, and do basic logging.
 
-Currently it only works with ruby 1.9.
+It works with ruby 1.9.
 
 == Install
 
   gem install loady
 
-Use bunder. Include the gem in your Gemfile:
+Use bundler. Include the gem in your Gemfile:
 
   gem 'loady'
 
 == Use
 
-If any error occurs, Loady will continue reading the file, ignoring problems rows and logging a warning for each.
+If an error occurs, Loady will continue reading the file, ignoring problems rows and logging a warning for each.
 
 By default, messages are logged to the standard output.
 
@@ -25,7 +25,7 @@ Basic usage:
     puts "#{row[0]}, #{row[1]}, etc."
   end
 
-Skip first row and log to a file:
+Skip the first row and log to a file:
 
   logger = Logger.new "/your/file.log"
 
