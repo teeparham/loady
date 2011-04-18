@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Tee Parham"]
   s.email       = ["tee@stackpilot.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/stackpilot/loady"
   s.summary     = %q{CSV file loader with simple logging}
   s.description = %q{CSV file loader with simple logging}
 
