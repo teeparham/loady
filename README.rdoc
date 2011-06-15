@@ -1,8 +1,8 @@
 = Loady - A CSV file loader with simple logging
 
-Loady is a simple file reader and logger. Use it to quickly load a csv file, continue on error rows, and do basic logging.
+Loady is a simple file reader and logger. Use it to quickly load any delimted file, continue on error rows, and do basic logging.
 
-It works with ruby 1.9.
+It works with ruby 1.9. It uses ruby's CSV library to parse rows.
 
 == Install
 
