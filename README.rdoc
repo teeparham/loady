@@ -41,7 +41,7 @@ Name your attributes:
 
 Load a tab-delimited file:
 
-  Loady.csv "/your/file.csv", :col_sep => "\t"  do |row|
+  Loady.csv "/your/file.tab", :col_sep => "\t"  do |row|
     # go bananas 
   end
 
