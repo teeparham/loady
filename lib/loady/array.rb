@@ -1,7 +1,8 @@
 class Array
 
   # usage:
-  # ['john', 'doe'].to_attributes([:first, :last]) => { :first => 'john', :last => 'doe' }
+  # ['john', 'doe'].to_attributes([:first, :last]) 
+  # => { :first => 'john', :last => 'doe' }
   #
   # options:
   #   :strip => true     -- default = false
