@@ -45,3 +45,9 @@ Load a tab-delimited file:
     # go bananas 
   end
 
+== Development
+
+  git clone git://github.com/stackpilot/loady.git
+  cd loady
+  bundle
+  bundle exec rake test
