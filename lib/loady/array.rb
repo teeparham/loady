@@ -5,10 +5,10 @@ class Array
   # => { :first => 'john', :last => 'doe' }
   #
   # options:
-  #   :strip => true     -- default = false
+  #   :strip => false    -- default = true
   #                      -- array values must be strings if :strip is true
   def to_attributes(names, options={})
-    options = options.merge!(:strip => true){|_,o| o }
+    options = {:strip => true}.merge(options)
 
     h = {}
 
