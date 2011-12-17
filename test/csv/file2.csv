@@ -3,13 +3,13 @@
 Albert,1948,note: everything is read as a string whether it is quoted or not
 Koko,1971
 Curious George,1941
-blah.......
+blah.......,
 ",,,,,,,,,,,,,,,,,,,,this is a bad row because of the quote
 ",,,,,,,,,,,",,,/"\",,,,,,this is a bad row too
 
 "          blank rows are skipped, this is bad though
 
 Bear,1980,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"this is ok"
-Mighty Joe Young,1998
+Mighty Joe Young
 Donkey Kong,1981
 King Kong,1933
