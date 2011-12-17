@@ -19,6 +19,8 @@ class Array
         else
           h[name] = self[i]
         end
+      else
+        h[name] = nil
       end
     end
 
