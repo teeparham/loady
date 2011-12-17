@@ -17,9 +17,10 @@ class LoadyTest < Test::Unit::TestCase
       row = ['Bubbles  ', '2000']
       attrs = row.to_attributes [:name, :year, :mom]
 
-      assert_equal attrs.size, 2
+      assert_equal attrs.size, 3
       assert_equal attrs[:name], 'Bubbles'
       assert_equal attrs[:year], '2000'
+      assert_nil attrs[:mom]
     end
 
   end
