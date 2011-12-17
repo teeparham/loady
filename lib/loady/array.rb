@@ -14,7 +14,7 @@ class Array
 
     names.each_with_index do |name, i|
       if i < self.size
-        if options[:strip]
+        if options[:strip] && self[i]
           h[name] = self[i].strip
         else
           h[name] = self[i]
