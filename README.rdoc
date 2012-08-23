@@ -8,13 +8,13 @@ It works with ruby 1.9. It uses ruby's CSV library to parse rows.
 
   gem install loady
 
-Use bundler. Include the gem in your Gemfile:
+Or include the gem in your Gemfile:
 
   gem 'loady'
 
 == Use
 
-If an error occurs, Loady will continue reading the file, ignoring problems rows and logging a warning for each.
+If an error occurs, Loady will continue reading the file, ignoring problem rows and logging a warning for each.
 
 By default, messages are logged to the standard output.
 
