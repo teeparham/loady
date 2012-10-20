@@ -1,5 +1,6 @@
 require 'loady/array'
 require 'loady/csv_loader'
+require 'loady/memory_logger'
 
 module Loady
   def csv(*args, &block)
