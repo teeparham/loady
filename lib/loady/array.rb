@@ -2,13 +2,13 @@ class Array
 
   # usage:
   # ['john', 'doe'].to_attributes([:first, :last]) 
-  # => { :first => 'john', :last => 'doe' }
+  # => { first: 'john', last: 'doe' }
   #
   # options:
-  #   :strip => false    -- default = true
-  #                      -- array values must be strings if :strip is true
+  #   strip: false    -- default = true
+  #                   -- array values must be strings if :strip is true
   def to_attributes(names, options={})
-    options = {:strip => true}.merge(options)
+    options = { strip: true }.merge(options)
 
     h = {}
 

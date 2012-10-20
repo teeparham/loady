@@ -6,7 +6,7 @@ Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
 
-task :default => [:test]
+task default: [:test]
 
 Rake::TestTask.new(:test) do |t|
   t.test_files = %w(test/**/*.rb)
