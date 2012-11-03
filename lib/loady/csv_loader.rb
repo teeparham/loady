@@ -33,10 +33,10 @@ module Loady
             line_number += 1
 
             row = CSV.parse(line, options)[0]
+            row.extend Loady::Array
 
             unless row.empty?
               yield row
-
               success += 1
             end
           rescue Exception => message

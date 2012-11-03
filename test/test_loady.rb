@@ -1,10 +1,11 @@
 require File.expand_path('test_helper.rb', File.dirname(__FILE__))
 
 class LoadyTest < Test::Unit::TestCase
-  context "array" do
+  context "#to_attributes" do
 
     should "return named attributes" do
       row = ['Bubbles  ', '2000', ' King Kong ']
+      row.extend Loady::Array
       attrs = row.to_attributes [:name, :year, :mom]
   
       assert_equal attrs.size, 3
@@ -15,6 +16,7 @@ class LoadyTest < Test::Unit::TestCase
 
     should "return named attributes when missing values" do
       row = ['Bubbles  ', '2000']
+      row.extend Loady::Array
       attrs = row.to_attributes [:name, :year, :mom]
 
       assert_equal attrs.size, 3
