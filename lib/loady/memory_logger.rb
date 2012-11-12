@@ -2,7 +2,7 @@ module Loady
   class MemoryLogger
     attr_reader :messages
 
-    def initialize
+    def initialize(options={})
       @messages = []
     end
 
