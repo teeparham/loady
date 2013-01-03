@@ -6,8 +6,8 @@ module Loady
 
     class << self
       # valid options:
-      #   :skip_first_row => true                       -- default = false
-      #   :logger => Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
+      #   skip_first_row: true                       -- default = false
+      #   logger: Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
       #   plus any valid options you can pass to CSV.new:
       #     see http://www.ruby-doc.org/stdlib/libdoc/csv/rdoc/classes/CSV.html#M000190
       def read(filename, options={})
@@ -26,8 +26,7 @@ module Loady
             begin
               line_number += 1
 
-              row = CSV.parse(line, options)[0]
-              row.extend Loady::Array
+              row = Loady::AttributeArray.new CSV.parse(line, options)[0]
 
               unless row.empty?
                 yield row

@@ -1,8 +1,9 @@
 module Loady
-  module Array
+  class AttributeArray < Array
 
     # usage:
-    # ['john', 'doe'].to_attributes([:first, :last])
+    # aa = Loady::AttributeArray.new(['john', 'doe'])
+    # aa.to_attributes([:first, :last])
     # => { first: 'john', last: 'doe' }
     #
     # options:

@@ -1,4 +1,4 @@
-require 'loady/array'
+require 'loady/attribute_array'
 require 'loady/csv_loader'
 require 'loady/memory_logger'
 
