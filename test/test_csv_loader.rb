@@ -1,11 +1,25 @@
 require File.expand_path('test_helper.rb', File.dirname(__FILE__))
 
 class CsvLoaderTest < Test::Unit::TestCase
+  should "delegate Loady.csv to instance #read" do
+    Loady::CsvLoader.any_instance.expects :read
+    Loady.csv("file")
+  end
+
+  should "delegate Loady.read to instance #read" do
+    Loady::CsvLoader.any_instance.expects :read
+    Loady.read("file")
+  end
+
+  should "delegate #read to instance #read" do
+    Loady::CsvLoader.any_instance.expects :read
+    Loady::CsvLoader.read("file")
+  end
 
   should "read file1" do
     monkeys = []
 
-    Loady::CsvLoader.read "test/csv/file1.csv", skip_first_row: true do |row|
+    Loady.read "test/csv/file1.csv", skip_first_row: true do |row|
       monkeys << { name: row[0], year: row[1] }
     end
 
@@ -20,7 +34,7 @@ class CsvLoaderTest < Test::Unit::TestCase
     logger = Logger.new("/dev/null")
     monkeys = []
 
-    Loady.csv "test/csv/file2.csv", logger: logger do |row|
+    Loady.read "test/csv/file2.csv", logger: logger do |row|
       monkeys << row.to_attributes([:name, :year])
     end
 
@@ -34,7 +48,7 @@ class CsvLoaderTest < Test::Unit::TestCase
   should "read file3, a tab-delimited file" do
     monkeys = []
 
-    Loady.csv "test/csv/file3.dat", skip_first_row: true, col_sep: "\t" do |row|
+    Loady.read "test/csv/file3.dat", skip_first_row: true, col_sep: "\t" do |row|
       monkeys << { name: row[0], year: row[1] }
     end
 
