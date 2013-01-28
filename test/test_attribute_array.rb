@@ -1,4 +1,4 @@
-require File.expand_path('test_helper.rb', File.dirname(__FILE__))
+require 'test_helper'
 
 class AttributeArrayTest < Test::Unit::TestCase
   should "respond to to_attributes" do

@@ -1,4 +1,4 @@
-require File.expand_path('test_helper.rb', File.dirname(__FILE__))
+require 'test_helper'
 
 class MemoryLoggerTest < Test::Unit::TestCase
   context "memory logger" do

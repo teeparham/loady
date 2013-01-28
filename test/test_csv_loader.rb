@@ -1,4 +1,4 @@
-require File.expand_path('test_helper.rb', File.dirname(__FILE__))
+require 'test_helper'
 
 class CsvLoaderTest < Test::Unit::TestCase
   should "delegate Loady.csv to instance #read" do
