@@ -20,7 +20,7 @@ By default, messages are logged to the standard output.
 
 Basic usage:
 
-  Loady.csv "/your/file.csv" do |row|
+  Loady.read "/your/file.csv" do |row|
     # your code to process each row goes here
     puts "#{row[0]}, #{row[1]}, etc."
   end
@@ -29,19 +29,19 @@ Skip the first row and log to a file:
 
   logger = Logger.new "/your/file.log"
 
-  Loady.csv "/your/file.csv", logger: logger, skip_first_row: true do |row|
+  Loady.read "/your/file.csv", logger: logger, skip_first_row: true do |row|
     # do some stuff for each row
   end
 
 Name your attributes:
 
-  Loady.csv "/your/file.csv"  do |row|
+  Loady.read "/your/file.csv"  do |row|
     Monkey.create row.to_attributes [:name, :year, :mom]
   end
 
 Load a tab-delimited file:
 
-  Loady.csv "/your/file.tab", col_sep: "\t"  do |row|
+  Loady.read "/your/file.tab", col_sep: "\t"  do |row|
     # go bananas 
   end
 
