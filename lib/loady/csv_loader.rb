@@ -3,16 +3,16 @@ require 'logger'
 
 module Loady
   class CsvLoader
-    class << self
-      def read(*args, &block)
-        self.new.read(*args, &block)
-      end
-    end
-
     def initialize
       @success = 0
       @warning = 0
       @line_number = 0
+    end
+
+    class << self
+      def read(*args, &block)
+        self.new.read(*args, &block)
+      end
     end
 
     # valid options:
@@ -20,41 +20,41 @@ module Loady
     #   logger: Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
     #   plus any valid options you can pass to CSV.new:
     #     see http://www.ruby-doc.org/stdlib/libdoc/csv/rdoc/classes/CSV.html#M000190
-    def read(filename, options={})
-      logger = options.delete(:logger) || default_logger
+    def read(filename, options={}, &block)
+      @logger = options.delete(:logger) || default_logger
 
       f = File.new(filename)
       f.readline if options.delete(:skip_first_row)
 
       begin
         while (line = f.readline)
-          begin
-            @line_number += 1
-
-            row = Loady::AttributeArray.new CSV.parse(line, options)[0]
-
-            unless row.empty?
-              yield row
-              @success += 1
-            end
-          rescue Exception => message
-            @warning += 1
-            logger.warn "#{message.to_s.gsub("line 1", "line #@line_number")}\n#{line}"
-          end
+          readline(line, options, &block)
         end
       rescue EOFError
         f.close
       rescue Exception => message
         @warning += 1
         @line_number += 1
-        logger.error "#{message.to_s} - at line #@line_number\n#{line}"
+        @logger.error "#{message.to_s} - at line #@line_number\n#{line}"
       end
 
-      logger.info "Finished. Loaded #@success rows. #@warning unprocessed rows."
+      @logger.info "Finished. Loaded #@success rows. #@warning unprocessed rows."
     end
 
-
   private
+
+    def readline(line, options)
+      @line_number += 1
+      row = AttributeArray.new(CSV.parse(line, options)[0])
+
+      unless row.empty?
+        yield row
+        @success += 1
+      end
+    rescue Exception => message
+      @warning += 1
+      @logger.warn "#{message.to_s.gsub("line 1", "line #@line_number")}\n#{line}"
+    end
 
     def default_logger
       logger = Logger.new(STDOUT)
