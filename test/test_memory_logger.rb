@@ -12,17 +12,17 @@ class MemoryLoggerTest < Test::Unit::TestCase
 
     should "log warning" do
       @logger.warn "message"
-      assert_equal "message", @logger.messages.first.to_s
+      assert_equal "message", @logger.messages.first
     end
 
     should "log info" do
       @logger.info "message"
-      assert_equal "message", @logger.messages.first.to_s
+      assert_equal "message", @logger.messages.first
     end
 
     should "log error" do
       @logger.error "message"
-      assert_equal "message", @logger.messages.first.to_s
+      assert_equal "message", @logger.messages.first
     end
   end
 end

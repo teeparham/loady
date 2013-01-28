@@ -35,7 +35,7 @@ module Loady
       rescue Exception => message
         @warning += 1
         @line_number += 1
-        @logger.error "#{message.to_s} - at line #@line_number\n#{line}"
+        @logger.error "#{message} - at line #@line_number\n#{line}"
       end
 
       @logger.info "Finished. Loaded #@success rows. #@warning unprocessed rows."
