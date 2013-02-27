@@ -12,12 +12,12 @@ Gem::Specification.new do |s|
   s.summary     = %q{CSV file loader with simple logging}
   s.description = %q{CSV file loader with simple logging}
 
-  s.rubyforge_project = "loady"
-
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = %w(lib)
+
+  s.required_ruby_version = '>=1.9.2'
 
   s.add_development_dependency "mocha"
   s.add_development_dependency "rake"
