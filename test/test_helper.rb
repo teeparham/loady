@@ -1,4 +1,4 @@
 require 'test/unit'
-require 'shoulda'
+require 'shoulda-context'
 require 'mocha/setup'
 require 'loady'
