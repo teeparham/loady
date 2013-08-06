@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/loady.png)](http://badge.fury.io/rb/loady)
 [![Build Status](https://api.travis-ci.org/teeparham/loady.png)](https://travis-ci.org/teeparham/loady)
 [![Code Climate](https://codeclimate.com/github/teeparham/loady.png)](https://codeclimate.com/github/teeparham/loady)
 
