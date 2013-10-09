@@ -9,12 +9,6 @@ module Loady
       @line_number = 0
     end
 
-    class << self
-      def read(*args, &block)
-        self.new.read(*args, &block)
-      end
-    end
-
     # valid options:
     #   skip_first_row: true                       -- default = false
     #   logger: Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
@@ -32,6 +26,12 @@ module Loady
       end        
 
       @logger.info "Finished. Loaded #@success rows. #@warning unprocessed rows."
+    end
+
+    class << self
+      def read(*args, &block)
+        self.new.read(*args, &block)
+      end
     end
 
   private

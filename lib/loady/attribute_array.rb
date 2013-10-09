@@ -15,15 +15,10 @@ module Loady
       attr_hash = {}
 
       names.each_with_index do |name, i|
-        if i < self.size
-          if options[:strip] && self[i]
-            attr_hash[name] = self[i].strip
-          else
-            attr_hash[name] = self[i]
+        attr_hash[name] = 
+          if i < self.size && self[i]
+            options[:strip] ? self[i].strip : self[i]
           end
-        else
-          attr_hash[name] = nil
-        end
       end
 
       attr_hash
