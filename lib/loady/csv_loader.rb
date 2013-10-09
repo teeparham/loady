@@ -27,15 +27,9 @@ module Loady
       f.autoclose = true
       f.gets if options.delete(:skip_first_row)
 
-      begin
-        f.each do |line|
-          readline(line, options, &block)
-        end        
-      rescue Exception => message
-        @warning += 1
-        @line_number += 1
-        @logger.error "#{message} - at line #@line_number\n#{line}"
-      end
+      f.each do |line|
+        readline line, options, &block
+      end        
 
       @logger.info "Finished. Loaded #@success rows. #@warning unprocessed rows."
     end
