@@ -24,14 +24,13 @@ module Loady
       @logger = options.delete(:logger) || default_logger
 
       f = File.new(filename)
-      f.readline if options.delete(:skip_first_row)
+      f.autoclose = true
+      f.gets if options.delete(:skip_first_row)
 
       begin
-        while (line = f.readline)
+        f.each do |line|
           readline(line, options, &block)
-        end
-      rescue EOFError
-        f.close
+        end        
       rescue Exception => message
         @warning += 1
         @line_number += 1
