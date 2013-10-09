@@ -40,13 +40,13 @@ module Loady
       @line_number += 1
       row = AttributeArray.new(CSV.parse(line, options)[0])
 
-      unless row.empty?
+      if row.any?
         yield row
         @success += 1
       end
-    rescue Exception => message
+    rescue Exception => ex
       @warning += 1
-      @logger.warn "#{message.to_s.gsub("line 1", "line #@line_number")}\n#{line}"
+      @logger.warn "#{ex.to_s.gsub("line 1", "line #@line_number")}\n#{line}"
     end
 
     def default_logger
