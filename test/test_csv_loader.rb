@@ -1,22 +1,22 @@
 require 'test_helper'
 
-class CsvLoaderTest < Test::Unit::TestCase
-  should "delegate Loady.csv to instance #read" do
+class CsvLoaderTest < MiniTest::Spec
+  it "delegate Loady.csv to instance #read" do
     Loady::CsvLoader.any_instance.expects :read
     Loady.csv("file")
   end
 
-  should "delegate Loady.read to instance #read" do
+  it "delegate Loady.read to instance #read" do
     Loady::CsvLoader.any_instance.expects :read
     Loady.read("file")
   end
 
-  should "delegate #read to instance #read" do
+  it "delegate #read to instance #read" do
     Loady::CsvLoader.any_instance.expects :read
     Loady::CsvLoader.read("file")
   end
 
-  should "read file1" do
+  it "read file1" do
     monkeys = []
 
     Loady.read "test/csv/file1.csv", skip_first_row: true do |row|
@@ -30,7 +30,7 @@ class CsvLoaderTest < Test::Unit::TestCase
     assert_equal monkeys[9][:year], "1933", "last row year"
   end
 
-  should "read file2 with logger using named attributes" do
+  it "read file2 with logger using named attributes" do
     logger = Logger.new("/dev/null")
     monkeys = []
 
@@ -45,7 +45,7 @@ class CsvLoaderTest < Test::Unit::TestCase
     assert_equal monkeys[9][:year], "1933", "last row year"
   end
 
-  should "read file3, a tab-delimited file" do
+  it "read file3, a tab-delimited file" do
     monkeys = []
 
     Loady.read "test/csv/file3.dat", skip_first_row: true, col_sep: "\t" do |row|
