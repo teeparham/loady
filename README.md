@@ -7,7 +7,7 @@
 
 Loady is a simple file reader and logger. Use it to quickly load any delimited file, continue on error rows, and do basic logging.
 
-It works with MRI ruby 1.9 and 2.0. It uses ruby's CSV library to parse rows.
+It works with MRI ruby 1.9.3+. It uses ruby's CSV library to parse rows.
 
 ## Install
 
@@ -31,8 +31,7 @@ By default, messages are logged to the standard output.
 
 ``` ruby
 Loady.read "/your/file.csv" do |row|
-  # your code to process each row goes here
-  puts "#{row[0]}, #{row[1]}, etc."
+  # handle each row
 end
 ```
 
@@ -42,7 +41,7 @@ end
 logger = Logger.new "/your/file.log"
 
 Loady.read "/your/file.csv", logger: logger, skip_first_row: true do |row|
-  # do some stuff for each row
+  puts "#{row[0]}, #{row[1]}, etc."
 end
 ```
 
@@ -51,6 +50,9 @@ end
 ``` ruby
 Loady.read "/your/file.csv"  do |row|
   Monkey.create row.to_attributes [:name, :year, :mom]
+
+  # row.to_attributes [:name, :year, :mom]
+  # => { name: 'Bubbles', year: 2000, mom: 'Momma Bubbles' }
 end
 ```
 
@@ -62,11 +64,3 @@ Loady.read "/your/file.tab", col_sep: "\t"  do |row|
 end
 ```
 
-## Development
-
-```
-git clone git://github.com/teeparham/loady.git
-cd loady
-bundle
-bundle exec rake
-```
