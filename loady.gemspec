@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.executables   = []
   s.require_paths = %w(lib)
 
-  s.required_ruby_version = '>=1.9.2'
+  s.required_ruby_version = '>= 1.9.3'
 
   s.add_development_dependency "mocha"
   s.add_development_dependency "rake"
