@@ -1,11 +1,13 @@
+# Loady
+
 [![Gem Version](https://badge.fury.io/rb/loady.png)](http://badge.fury.io/rb/loady)
 [![Build Status](https://api.travis-ci.org/teeparham/loady.png)](https://travis-ci.org/teeparham/loady)
 [![Code Climate](https://codeclimate.com/github/teeparham/loady.png)](https://codeclimate.com/github/teeparham/loady)
 [![Coverage Status](https://coveralls.io/repos/teeparham/loady/badge.png)](https://coveralls.io/r/teeparham/loady)
 
-# Loady - A file loader with simple logging
+Loady is a simple file reader and logger. Use it to read any delimited file. Loady makes it easy to conveniently convert input fields to an attribute hash, continue on error rows, and do basic logging.
 
-Loady is a simple file reader and logger. Use it to quickly load any delimited file, continue on error rows, and do basic logging.
+Loady was initially created to load hundreds of millions of rows from CSV files that had various data errors.
 
 It works with MRI ruby 1.9.3+. It uses ruby's CSV library to parse rows.
 
@@ -64,3 +66,21 @@ Loady.read "/your/file.tab", col_sep: "\t"  do |row|
 end
 ```
 
+### Collect log messages in memory
+
+`Loady::MemoryLoader` is a class that collects log messages in memory.
+
+``` ruby
+memory_logger = Loady::MemoryLogger.new
+
+Loady.read "/your/file.csv", logger: memory_logger do |row|
+  # do things
+end
+
+memory_logger.messages
+=> [
+    'Line 123: Something bad happened.', 
+    'Line 456: Exception of some sort.',
+    'Finished. Loaded 9998 rows. 2 unprocessed rows.'
+   ]
+```
