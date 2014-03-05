@@ -1,9 +1,9 @@
 # Loady
 
-[![Gem Version](https://badge.fury.io/rb/loady.png)](http://badge.fury.io/rb/loady)
-[![Build Status](https://api.travis-ci.org/teeparham/loady.png)](https://travis-ci.org/teeparham/loady)
-[![Code Climate](https://codeclimate.com/github/teeparham/loady.png)](https://codeclimate.com/github/teeparham/loady)
-[![Coverage Status](https://coveralls.io/repos/teeparham/loady/badge.png)](https://coveralls.io/r/teeparham/loady)
+[![Gem Version](http://img.shields.io/gem/v/loady.svg)](http://rubygems.org/gem/loady)
+[![Build Status](http://img.shields.io/travis/teeparham/loady.svg)](https://travis-ci.org/teeparham/loady)
+[![Code Climate](http://img.shields.io/codeclimate/github/teeparham/loady.svg)](https://codeclimate.com/github/teeparham/loady)
+[![Coverage Status](http://img.shields.io/coveralls/teeparham/loady.svg)](https://coveralls.io/r/teeparham/loady)
 
 Loady is a simple file reader and logger. Use it to read any delimited file. Loady makes it easy to conveniently convert input fields to an attribute hash, continue on error rows, and do basic logging.
 
