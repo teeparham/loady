@@ -1,8 +1,5 @@
-pkg/*
-*.gem
 .bundle
 .idea
+.ruby-version
 Gemfile.lock
-*#
-.#*
-*~
+pkg/
