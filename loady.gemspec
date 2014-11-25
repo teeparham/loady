@@ -8,12 +8,11 @@ Gem::Specification.new do |s|
   s.authors     = ["Tee Parham"]
   s.email       = %w(tee@neighborland.com)
   s.homepage    = "http://github.com/teeparham/loady"
-  s.summary     = %q{File loader with simple logging}
-  s.description = %q{File loader with simple logging}
+  s.summary     = %(File loader with simple logging)
+  s.description = %(File loader with simple logging)
   s.license     = "MIT"
 
-  s.files         = `git ls-files`.split("\n")
-  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.files         = Dir["LICENSE.txt", "README.md", "lib/**/*"]
   s.executables   = []
   s.require_paths = %w(lib)
 
