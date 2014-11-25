@@ -16,8 +16,8 @@ module Loady
 
       names.each_with_index do |name, i|
         attr_hash[name] = 
-          if i < self.size && self[i]
-            options[:strip] ? self[i].strip : self[i]
+          if i < size && self[i]
+            options[:strip] ? self[i].to_s.strip : self[i]
           end
       end
 
