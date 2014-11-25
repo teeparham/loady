@@ -9,7 +9,7 @@ module Loady
     # options:
     #   strip: false    -- default = true
     #                   -- array values must be strings if :strip is true
-    def to_attributes(names, options={})
+    def to_attributes(names, options = {})
       options = { strip: true }.merge(options)
 
       attr_hash = {}

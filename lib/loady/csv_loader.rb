@@ -14,14 +14,14 @@ module Loady
     #   logger: Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
     #   plus any valid options you can pass to CSV.new:
     #     see http://www.ruby-doc.org/stdlib/libdoc/csv/rdoc/classes/CSV.html#M000190
-    def read(filename, options={}, &block)
+    def read(filename, options = {}, &block)
       @logger = options.delete(:logger) || default_logger
 
-      f = File.new(filename)
-      f.autoclose = true
-      f.gets if options.delete(:skip_first_row)
+      file = File.new(filename)
+      file.autoclose = true
+      file.gets if options.delete(:skip_first_row)
 
-      f.each do |line|
+      file.each do |line|
         readline line, options, &block
       end        
 
