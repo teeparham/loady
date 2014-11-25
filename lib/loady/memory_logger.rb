@@ -10,7 +10,7 @@ module Loady
       @messages << message
     end
 
-    alias_method :warn, :info
-    alias_method :error, :info
+    alias warn info
+    alias error info
   end
 end
