@@ -12,16 +12,13 @@ module Loady
     def to_attributes(names, options = {})
       options = { strip: true }.merge(options)
 
-      attr_hash = {}
-
-      names.each_with_index do |name, i|
-        attr_hash[name] = 
-          if i < size && self[i]
-            options[:strip] ? self[i].to_s.strip : self[i]
-          end
+      {}.tap do |attr_hash|
+        names.each_with_index do |name, i|
+          attr_hash[name] = if i < size && self[i]
+                              options[:strip] ? self[i].to_s.strip : self[i]
+                            end
+        end
       end
-
-      attr_hash
     end
 
   end
