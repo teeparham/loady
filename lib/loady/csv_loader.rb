@@ -17,20 +17,20 @@ module Loady
     def read(filename, options = {}, &block)
       @logger = options.delete(:logger) || default_logger
 
-      file = File.new(filename)
-      file.autoclose = true
-      file.gets if options.delete(:skip_first_row)
+      File.open(filename, "r") do |file|
+        file.gets if options.delete(:skip_first_row)
 
-      file.each do |line|
-        readline line, options, &block
-      end        
+        file.each do |line|
+          readline line, options, &block
+        end
+      end
 
-      @logger.info "Finished. Loaded #{@success} rows. #{@warning} unprocessed rows."
+      @logger.info "Finished. Loaded #{ @success } rows. #{ @warning } unprocessed rows."
     end
 
     class << self
       def read(*args, &block)
-        self.new.read(*args, &block)
+        new.read(*args, &block)
       end
     end
 
@@ -46,7 +46,7 @@ module Loady
       end
     rescue Exception => ex
       @warning += 1
-      @logger.warn "#{ex.to_s.gsub("line 1", "line #{@line_number}")}\n#{line}"
+      @logger.warn "#{ ex.to_s.gsub("line 1", "line #{ @line_number }") }\n#{ line }"
     end
 
     def default_logger
