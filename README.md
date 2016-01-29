@@ -79,8 +79,17 @@ end
 
 memory_logger.messages
 => [
-    'Line 123: Something bad happened.', 
+    'Line 123: Something bad happened.',
     'Line 456: Exception of some sort.',
     'Finished. Loaded 9998 rows. 2 unprocessed rows.'
    ]
 ```
+
+## Major Change in 1.0
+
+Up to version 1.0, `loady` worked fundamentally differently than ruby's CSV
+parser in that it did not support newlines. The benefit was that lines
+with errant newlines could easily be ignored.
+
+In version 1.0+, `loady` works like the stdlib ruby CSV parser, and you
+must have properly formed CSV rows.
