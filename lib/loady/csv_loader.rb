@@ -16,16 +16,15 @@ module Loady
     #     see http://www.ruby-doc.org/stdlib/libdoc/csv/rdoc/classes/CSV.html#M000190
     def read(filename, options = {}, &block)
       @logger = options.delete(:logger) || default_logger
+      options[:headers] ||= options.delete(:skip_first_row)
 
-      File.open(filename, "r") do |file|
-        file.gets if options.delete(:skip_first_row)
-
-        file.each do |line|
-          readline line, options, &block
-        end
+      CSV.foreach(filename, options) do |line|
+        readline line, options, &block
       end
-
-      @logger.info "Finished. Loaded #{ @success } rows. #{ @warning } unprocessed rows."
+      @logger.info "Finished. Loaded #{ @success } rows. #{ @warning } skipped rows."
+    rescue CSV::MalformedCSVError => ex
+      @logger.error ex.message
+      @logger.error "Stopped Loading after #{ @success } rows. #{ @warning } skipped rows."
     end
 
     class << self
@@ -38,7 +37,11 @@ module Loady
 
     def readline(line, options)
       @line_number += 1
-      row = AttributeArray.new(CSV.parse(line, options)[0])
+      row = if line.respond_to?(:to_hash)
+              AttributeArray.new(line.to_hash.values)
+            else
+              AttributeArray.new(line)
+            end
 
       if row.any?
         yield row

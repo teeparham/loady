@@ -24,13 +24,13 @@ class CsvLoaderTest < MiniTest::Spec
       monkeys << { name: row[0], year: row[1] }
     end
 
-    assert_equal monkeys.count, 10, "total rows read"
-    assert_equal monkeys[0][:name], "Bubbles", "first row name"
-    assert_equal monkeys[0][:year], "2000", "first row year"
-    assert_equal monkeys[9][:name], "King Kong", "last row name"
-    assert_equal monkeys[9][:year], "1933", "last row year"
+    assert_equal 10, monkeys.count, "total rows read"
+    assert_equal "Bubbles", monkeys[0][:name], "first row name"
+    assert_equal "2000", monkeys[0][:year], "first row year"
+    assert_equal "King Kong", monkeys[9][:name], "last row name"
+    assert_equal "1933", monkeys[9][:year], "last row year"
     assert_equal 1, logger.messages.size
-    assert_equal "Finished. Loaded 10 rows. 0 unprocessed rows.", logger.messages.first
+    assert_equal "Finished. Loaded 10 rows. 0 skipped rows.", logger.messages.first
   end
 
   it "read file2 with logger using named attributes" do
@@ -41,13 +41,14 @@ class CsvLoaderTest < MiniTest::Spec
       monkeys << row.to_attributes([:name, :year])
     end
 
-    assert_equal monkeys.count, 10, "total rows read"
-    assert_equal monkeys[0][:name], "Bubbles", "first row name"
-    assert_equal monkeys[0][:year], "2000", "first row year"
-    assert_equal monkeys[9][:name], "King Kong", "last row name"
-    assert_equal monkeys[9][:year], "1933", "last row year"
-    assert_equal 4, logger.messages.size
-    assert_equal "Finished. Loaded 10 rows. 3 unprocessed rows.", logger.messages.last
+    assert_equal 10, monkeys.count, "total rows read"
+    assert_equal "Bubbles", monkeys[0][:name], "first row name"
+    assert_equal "2000", monkeys[0][:year], "first row year"
+    assert_equal "King Kong", monkeys[9][:name], "last row name"
+    assert_equal "1933", monkeys[9][:year], "last row year"
+    assert_equal 2, logger.messages.size
+    assert_equal "Unclosed quoted field on line 13.", logger.messages.first
+    assert_equal "Stopped Loading after 10 rows. 0 skipped rows.", logger.messages.last
   end
 
   it "read file3, a tab-delimited file" do
@@ -58,18 +59,18 @@ class CsvLoaderTest < MiniTest::Spec
       monkeys << { name: row[0], year: row[1] }
     end
 
-    assert_equal monkeys.count, 10, "total rows read"
-    assert_equal monkeys[0][:name], "Bubbles", "first row name"
-    assert_equal monkeys[0][:year], "2000", "first row year"
-    assert_equal monkeys[9][:name], "King Kong", "last row name"
-    assert_equal monkeys[9][:year], "1933", "last row year"
+    assert_equal 10, monkeys.count, "total rows read"
+    assert_equal "Bubbles", monkeys[0][:name], "first row name"
+    assert_equal "2000", monkeys[0][:year], "first row year"
+    assert_equal "King Kong", monkeys[9][:name], "last row name"
+    assert_equal "1933", monkeys[9][:year], "last row year"
     assert_equal 1, logger.messages.size
-    assert_equal "Finished. Loaded 10 rows. 0 unprocessed rows.", logger.messages.first
+    assert_equal "Finished. Loaded 10 rows. 0 skipped rows.", logger.messages.first
   end
-  
+
   private
-  
+
   def memory_logger
     Loady::MemoryLogger.new
-  end       
+  end
 end
