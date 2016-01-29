@@ -6,7 +6,7 @@ module Loady
   def read(*args, &block)
     Loady::CsvLoader.new.read(*args, &block)
   end
-  
+
   alias csv read
 
   module_function :read, :csv

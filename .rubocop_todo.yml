@@ -54,13 +54,6 @@ Style/Documentation:
     - 'lib/loady/memory_logger.rb'
     - 'lib/loady/version.rb'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/EmptyLinesAroundClassBody:
-  Exclude:
-    - 'lib/loady/attribute_array.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: MaxLineLength.
@@ -92,16 +85,3 @@ Style/StringLiterals:
 # Configuration parameters: EnforcedStyle, SupportedStyles.
 Style/StringLiteralsInInterpolation:
   Enabled: false
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles.
-Style/TrailingBlankLines:
-  Exclude:
-    - 'Rakefile'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/TrailingWhitespace:
-  Exclude:
-    - 'lib/loady.rb'

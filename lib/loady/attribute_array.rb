@@ -1,6 +1,5 @@
 module Loady
   class AttributeArray < Array
-
     # usage:
     # aa = Loady::AttributeArray.new(['john', 'doe'])
     # aa.to_attributes([:first, :last])
@@ -20,6 +19,5 @@ module Loady
         end
       end
     end
-
   end
 end
