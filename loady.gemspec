@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.1.0"
 
   s.add_development_dependency "mocha", "~> 1.1"
-  s.add_development_dependency "rake", "~> 11.0"
+  s.add_development_dependency "rake", "~> 12.0"
   s.add_development_dependency "minitest", "~> 5.5"
 end
