@@ -33,7 +33,7 @@ module Loady
       end
     end
 
-  private
+    private
 
     def readline(line, options)
       @line_number += 1

@@ -7,8 +7,8 @@ class AttributeArrayTest < MiniTest::Spec
   end
 
   it "initialize with Array" do
-    aa = Loady::AttributeArray.new([1,2])
-    assert_equal [1,2], aa
+    aa = Loady::AttributeArray.new([1, 2])
+    assert_equal [1, 2], aa
   end
 
   describe "#to_attributes" do
