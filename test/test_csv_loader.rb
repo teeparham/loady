@@ -1,4 +1,6 @@
-require 'test_helper'
+# frozen_string_literal: true
+
+require "test_helper"
 
 class CsvLoaderTest < MiniTest::Spec
   it "delegate Loady.csv to instance #read" do
@@ -38,7 +40,7 @@ class CsvLoaderTest < MiniTest::Spec
     monkeys = []
 
     Loady.read "test/csv/file2.csv", logger: logger do |row|
-      monkeys << row.to_attributes([:name, :year])
+      monkeys << row.to_attributes(%i[name year])
     end
 
     assert_equal 10, monkeys.count, "total rows read"
@@ -47,7 +49,8 @@ class CsvLoaderTest < MiniTest::Spec
     assert_equal "King Kong", monkeys[9][:name], "last row name"
     assert_equal "1933", monkeys[9][:year], "last row year"
     assert_equal 2, logger.messages.size
-    assert_equal "Unclosed quoted field on line 13.", logger.messages.first
+    # error message changed from "on" to "in" in ruby 2.6
+    assert_equal "Unclosed quoted field in line 13.", logger.messages.first.sub(" on", " in")
     assert_equal "Stopped Loading after 10 rows. 0 skipped rows.", logger.messages.last
   end
 

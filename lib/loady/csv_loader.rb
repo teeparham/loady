@@ -1,5 +1,7 @@
-require 'csv'
-require 'logger'
+# frozen_string_literal: true
+
+require "csv"
+require "logger"
 
 module Loady
   class CsvLoader
@@ -19,12 +21,12 @@ module Loady
       options[:headers] ||= options.delete(:skip_first_row)
 
       CSV.foreach(filename, options) do |line|
-        readline line, options, &block
+        readline line, &block
       end
-      @logger.info "Finished. Loaded #{ @success } rows. #{ @warning } skipped rows."
-    rescue CSV::MalformedCSVError => ex
-      @logger.error ex.message
-      @logger.error "Stopped Loading after #{ @success } rows. #{ @warning } skipped rows."
+      @logger.info "Finished. Loaded #{@success} rows. #{@warning} skipped rows."
+    rescue CSV::MalformedCSVError => e
+      @logger.error e.message
+      @logger.error "Stopped Loading after #{@success} rows. #{@warning} skipped rows."
     end
 
     class << self
@@ -35,7 +37,7 @@ module Loady
 
     private
 
-    def readline(line, options)
+    def readline(line)
       @line_number += 1
       row = if line.respond_to?(:to_hash)
               AttributeArray.new(line.to_hash.values)
@@ -47,9 +49,9 @@ module Loady
         yield row
         @success += 1
       end
-    rescue Exception => ex
+    rescue StandardError => e
       @warning += 1
-      @logger.warn "#{ ex.to_s.gsub("line 1", "line #{ @line_number }") }\n#{ line }"
+      @logger.warn "#{e.to_s.gsub('line 1', "line #{@line_number}")}\n#{line}"
     end
 
     def default_logger
