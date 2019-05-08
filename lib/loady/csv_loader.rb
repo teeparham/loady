@@ -51,7 +51,7 @@ module Loady
       end
     rescue Exception => ex
       @warning += 1
-      @logger.warn "#{ex.to_s.gsub("line 1", "line #{@line_number}")}\n#{line}"
+      @logger.warn "#{ex.to_s.gsub('line 1', "line #{@line_number}")}\n#{line}"
     end
 
     def default_logger
