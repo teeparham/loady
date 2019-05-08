@@ -16,7 +16,7 @@ class AttributeArrayTest < MiniTest::Spec
   describe "#to_attributes" do
     it "return named attributes" do
       row = Loady::AttributeArray.new(["Bubbles  ", "2000", " King Kong "])
-      attrs = row.to_attributes [:name, :year, :mom]
+      attrs = row.to_attributes %i[name year mom]
       assert_equal attrs.size, 3
       assert_equal attrs[:name], "Bubbles"
       assert_equal attrs[:year], "2000"
@@ -25,7 +25,7 @@ class AttributeArrayTest < MiniTest::Spec
 
     it "return named attributes when missing values" do
       row = Loady::AttributeArray.new(["Bubbles  ", "2000"])
-      attrs = row.to_attributes [:name, :year, :mom]
+      attrs = row.to_attributes %i[name year mom]
       assert_equal attrs.size, 3
       assert_equal attrs[:name], "Bubbles"
       assert_equal attrs[:year], "2000"

@@ -40,7 +40,7 @@ class CsvLoaderTest < MiniTest::Spec
     monkeys = []
 
     Loady.read "test/csv/file2.csv", logger: logger do |row|
-      monkeys << row.to_attributes([:name, :year])
+      monkeys << row.to_attributes(%i[name year])
     end
 
     assert_equal 10, monkeys.count, "total rows read"
