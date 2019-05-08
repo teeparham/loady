@@ -24,8 +24,8 @@ module Loady
         readline line, options, &block
       end
       @logger.info "Finished. Loaded #{@success} rows. #{@warning} skipped rows."
-    rescue CSV::MalformedCSVError => ex
-      @logger.error ex.message
+    rescue CSV::MalformedCSVError => e
+      @logger.error e.message
       @logger.error "Stopped Loading after #{@success} rows. #{@warning} skipped rows."
     end
 
@@ -49,9 +49,9 @@ module Loady
         yield row
         @success += 1
       end
-    rescue StandardError => ex
+    rescue StandardError => e
       @warning += 1
-      @logger.warn "#{ex.to_s.gsub('line 1', "line #{@line_number}")}\n#{line}"
+      @logger.warn "#{e.to_s.gsub('line 1', "line #{@line_number}")}\n#{line}"
     end
 
     def default_logger
