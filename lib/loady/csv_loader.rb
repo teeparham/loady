@@ -21,7 +21,7 @@ module Loady
       options[:headers] ||= options.delete(:skip_first_row)
 
       CSV.foreach(filename, options) do |line|
-        readline line, options, &block
+        readline line, &block
       end
       @logger.info "Finished. Loaded #{@success} rows. #{@warning} skipped rows."
     rescue CSV::MalformedCSVError => e
@@ -37,7 +37,7 @@ module Loady
 
     private
 
-    def readline(line, options)
+    def readline(line)
       @line_number += 1
       row = if line.respond_to?(:to_hash)
               AttributeArray.new(line.to_hash.values)
