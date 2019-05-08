@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Loady
   class AttributeArray < Array
     # usage:
