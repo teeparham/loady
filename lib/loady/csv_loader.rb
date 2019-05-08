@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'csv'
-require 'logger'
+require "csv"
+require "logger"
 
 module Loady
   class CsvLoader
