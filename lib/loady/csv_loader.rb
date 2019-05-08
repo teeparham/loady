@@ -49,7 +49,7 @@ module Loady
         yield row
         @success += 1
       end
-    rescue Exception => ex
+    rescue StandardError => ex
       @warning += 1
       @logger.warn "#{ex.to_s.gsub('line 1', "line #{@line_number}")}\n#{line}"
     end
