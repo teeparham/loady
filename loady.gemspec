@@ -14,9 +14,5 @@ Gem::Specification.new do |s|
   s.files         = Dir["LICENSE.txt", "README.md", "lib/**/*"]
   s.require_paths = %w[lib]
 
-
-  s.add_development_dependency "minitest", "~> 5.5"
-  s.add_development_dependency "mocha", "~> 1.1"
-  s.add_development_dependency "rake", "~> 12.0"
   s.required_ruby_version = ">= 3.2.0"
 end
