@@ -1,9 +1,10 @@
 inherit_from: .rubocop_todo.yml
 
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 3.2
+  NewCops: enable
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 Layout/MultilineOperationIndentation:
@@ -20,6 +21,6 @@ Style/StringLiterals:
 
 Style/FrozenStringLiteralComment:
   Exclude:
-    - 'Gemfile'
-    - 'Rakefile'
-    - '*.gemspec'
+    - "Gemfile"
+    - "Rakefile"
+    - "*.gemspec"
