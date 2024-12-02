@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class AttributeArrayTest < MiniTest::Spec
+class AttributeArrayTest < Minitest::Spec
   it "respond to to_attributes" do
     aa = Loady::AttributeArray.new
     assert aa.respond_to? :to_attributes

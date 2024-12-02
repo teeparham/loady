@@ -6,5 +6,5 @@ if ENV["TRAVIS"]
 end
 
 require "minitest/autorun"
-require "mocha/setup"
+require "mocha/minitest"
 require "loady"
