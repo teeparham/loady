@@ -10,7 +10,7 @@ Layout/ParameterAlignment:
 Layout/MultilineOperationIndentation:
   Enabled: false
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
 
 Style/SignalException:
