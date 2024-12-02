@@ -5,8 +5,8 @@ require "loady/csv_loader"
 require "loady/memory_logger"
 
 module Loady
-  def read(*args, &block)
-    Loady::CsvLoader.new.read(*args, &block)
+  def read(*, &)
+    Loady::CsvLoader.new.read(*, &)
   end
 
   alias csv read

@@ -15,12 +15,12 @@ module Loady
     #   skip_first_row: true                       -- default = false
     #   logger: Logger.new('/somewhere/file.log')  -- default = Logger.new(STDOUT)
     #   plus any valid options you can pass to CSV.new:
-    #     see http://www.ruby-doc.org/stdlib/libdoc/csv/rdoc/classes/CSV.html#M000190
+    #     see https://ruby.github.io/csv/CSV.html#class-CSV-label-Options
     def read(filename, options = {}, &block)
       @logger = options.delete(:logger) || default_logger
       options[:headers] ||= options.delete(:skip_first_row)
 
-      CSV.foreach(filename, options) do |line|
+      CSV.foreach(filename, **options) do |line|
         readline line, &block
       end
       @logger.info "Finished. Loaded #{@success} rows. #{@warning} skipped rows."
@@ -30,8 +30,8 @@ module Loady
     end
 
     class << self
-      def read(*args, &block)
-        new.read(*args, &block)
+      def read(*, **, &)
+        new.read(*, **, &)
       end
     end
 
@@ -55,7 +55,7 @@ module Loady
     end
 
     def default_logger
-      logger = Logger.new(STDOUT)
+      logger = Logger.new($stdout)
       logger.datetime_format = "%H:%M:%S"
       logger
     end
