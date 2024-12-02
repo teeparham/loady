@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class CsvLoaderTest < MiniTest::Spec
+class CsvLoaderTest < Minitest::Spec
   it "delegate Loady.csv to instance #read" do
     Loady::CsvLoader.any_instance.expects :read
     Loady.csv("file")

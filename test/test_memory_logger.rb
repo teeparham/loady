@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class MemoryLoggerTest < MiniTest::Spec
+class MemoryLoggerTest < Minitest::Spec
   describe "memory logger" do
     before do
       @logger = Loady::MemoryLogger.new
