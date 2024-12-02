@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.summary     = "File loader with simple logging"
   s.description = "File loader with simple logging"
   s.license     = "MIT"
+  s.metadata["rubygems_mfa_required"] = "true"
 
   s.files         = Dir["LICENSE.txt", "README.md", "lib/**/*"]
   s.require_paths = %w[lib]
