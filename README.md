@@ -1,8 +1,7 @@
 # Loady
 
 [![Gem Version](http://img.shields.io/gem/v/loady.svg)](http://rubygems.org/gem/loady)
-[![Build Status](http://img.shields.io/travis/teeparham/loady.svg)](https://travis-ci.org/teeparham/loady)
-[![Code Climate](http://img.shields.io/codeclimate/github/teeparham/loady.svg)](https://codeclimate.com/github/teeparham/loady)
+[![Build Status](https://github.com/teeparham/loady/actions/workflows/ruby.yml/badge.svg)](https://github.com/teeparham/loady/actions/workflows/ruby.yml)
 [![Coverage Status](http://img.shields.io/coveralls/teeparham/loady.svg)](https://coveralls.io/r/teeparham/loady)
 
 Loady is a simple file reader and logger. Use it to read any delimited file. Loady makes it easy to conveniently convert input fields to an attribute hash, continue on error rows, and do basic logging.
@@ -13,13 +12,13 @@ It works with MRI ruby 1.9.3+. It uses ruby's CSV library to parse rows.
 
 ## Install
 
-``` ruby
+```ruby
 gem install loady
 ```
 
 Or include the gem in your Gemfile:
 
-``` ruby
+```ruby
 gem 'loady'
 ```
 
@@ -31,7 +30,7 @@ By default, messages are logged to the standard output.
 
 ### Basic usage:
 
-``` ruby
+```ruby
 Loady.read "/your/file.csv" do |row|
   # handle each row
 end
@@ -39,7 +38,7 @@ end
 
 ### Skip the first row and log to a file:
 
-``` ruby
+```ruby
 logger = Logger.new "/your/file.log"
 
 Loady.read "/your/file.csv", logger: logger, skip_first_row: true do |row|
@@ -49,7 +48,7 @@ end
 
 ### Name your attributes:
 
-``` ruby
+```ruby
 Loady.read "/your/file.csv"  do |row|
   Monkey.create row.to_attributes [:name, :year, :mom]
 
@@ -60,7 +59,7 @@ end
 
 ### Load a tab-delimited file:
 
-``` ruby
+```ruby
 Loady.read "/your/file.tab", col_sep: "\t"  do |row|
   # go bananas
 end
@@ -70,7 +69,7 @@ end
 
 `Loady::MemoryLoader` is a class that collects log messages in memory.
 
-``` ruby
+```ruby
 memory_logger = Loady::MemoryLogger.new
 
 Loady.read "/your/file.csv", logger: memory_logger do |row|
