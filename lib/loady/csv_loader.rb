@@ -30,8 +30,8 @@ module Loady
     end
 
     class << self
-      def read(*, **, &)
-        new.read(*, **, &)
+      def read(...)
+        new.read(...)
       end
     end
 
